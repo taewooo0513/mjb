@@ -80,8 +80,8 @@ public class MapDestroy : MonoBehaviour
 
     private void SetMapPos()
     {
-        posX = Random.Range(-(transform.localScale.x / 2), transform.localScale.x / 2);
-        posZ = Random.Range(-(transform.localScale.z / 2), transform.localScale.z / 2);
+        posX = Random.Range(-(transform.localScale.x / 2.2f), transform.localScale.x / 2.2f);
+        posZ = Random.Range(-(transform.localScale.z / 2.2f), transform.localScale.z / 2.2f);
 
         if (Mathf.Abs(posX + posZ) > transform.localScale.x)
         {

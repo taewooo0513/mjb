@@ -31,11 +31,14 @@ public class Fall_Uimanager : MonoBehaviour
             scoreText.text = "" + score;
         }
 
-        if(Fall_Gamemanager.isGameOver && !gameoverPanel.activeSelf)
+        if(Fall_Gamemanager.isGameOver)
         {
+            if (!gameoverPanel.activeSelf)
+            {
+                gameoverPanel.SetActive(true);
+            }
+
             Time.timeScale = 0;
-            
-            gameoverPanel.SetActive(true);
         }
     }
 

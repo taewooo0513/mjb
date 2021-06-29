@@ -31,6 +31,7 @@ public class Stack_MovingBlock : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
         if (moveDirection == MoveDirection.Z)

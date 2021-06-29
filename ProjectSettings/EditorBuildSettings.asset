@@ -4,5 +4,23 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: b91b0dfe0c2abe840a4ddc5569f0de7b
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: cc2b45afb8c415f4696d8ad81842fd1c
+  - enabled: 1
+    path: Assets/Scenes/Dino.unity
+    guid: 9ae84dfa1e6e22a48836db107e972baf
+  - enabled: 1
+    path: Assets/Scenes/Fall.unity
+    guid: 63f2c03f184fb844e981bd5ce9a5f066
+  - enabled: 1
+    path: Assets/Scenes/flying_Dash.unity
+    guid: 9ad8e8e0fbed57c42acd84bd5a95ebb7
+  - enabled: 1
+    path: Assets/Scenes/TowerStack.unity
+    guid: 3afaa3054c869814ebb1d5680caf5c4b
   m_configObjects: {}

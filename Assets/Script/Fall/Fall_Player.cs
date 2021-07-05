@@ -32,7 +32,6 @@ public class Fall_Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            transform.LookAt(collision.transform);
             rb.AddForce(Vector3.back * 15f, ForceMode.VelocityChange);
         }
     }

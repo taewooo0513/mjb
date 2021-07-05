@@ -9,6 +9,7 @@ public class Stack_MovingBlock : MonoBehaviour
     public static Stack_MovingBlock currentBlock { get; private set; }
     public static Stack_MovingBlock lastBlock { get; private set; }
     public MoveDirection moveDirection { get; set; }
+    public float lastSpeed;
 
     [SerializeField] private float speed = 1f;
 
@@ -17,27 +18,60 @@ public class Stack_MovingBlock : MonoBehaviour
         if (lastBlock == null)
             lastBlock = GameObject.Find("StartBlock").GetComponent<Stack_MovingBlock>();
 
-        if(this.gameObject != GameObject.Find("StartBlock"))
+        if (this.gameObject != GameObject.Find("StartBlock"))
             currentBlock = this;
 
         GetComponent<Renderer>().material.color = GetRandomColor();
 
-        if(lastBlock.gameObject != GameObject.Find("StartBlock").gameObject)
+        if (lastBlock.gameObject != GameObject.Find("StartBlock").gameObject)
         {
             transform.localScale = new Vector3(lastBlock.transform.localScale.x,
             lastBlock.transform.localScale.y,
             lastBlock.transform.localScale.z);
+
+            speed = lastBlock.lastSpeed;
+
         }
     }
 
     // Update is called once per frame
-    
+
     void Update()
     {
         if (moveDirection == MoveDirection.Z)
+        {
+            if (transform.position.z >= 1.3f)
+            {
+                speed += 0.5f;
+                speed = -speed;
+                transform.position = new Vector3(transform.position.x, transform.position.y, 1.3f);
+            }
+            else if (transform.position.z <= -1.3f)
+            {
+                speed -= 0.5f;
+                speed = -speed;
+                transform.position = new Vector3(transform.position.x, transform.position.y, -1.3f);
+            }
+
             transform.position += transform.forward * Time.deltaTime * speed;
+        }
         else
+        {
+            if (transform.position.x >= 1.3f)
+            {
+                speed += 0.5f;
+                speed = -speed;
+                transform.position = new Vector3(1.3f, transform.position.y, transform.position.z);
+            }
+            else if (transform.position.x <= -1.3f)
+            {
+                speed -= 0.5f;
+                speed = -speed;
+                transform.position = new Vector3(-1.3f, transform.position.y, transform.position.z);
+            }
+
             transform.position += transform.right * Time.deltaTime * speed;
+        }
     }
 
     private Color GetRandomColor()
@@ -47,6 +81,7 @@ public class Stack_MovingBlock : MonoBehaviour
 
     internal void Stop()
     {
+        lastSpeed = speed;
         speed = 0;
         float hangover = GetHangover();
 
@@ -56,26 +91,30 @@ public class Stack_MovingBlock : MonoBehaviour
         {
             lastBlock = null;
             currentBlock = null;
-            SceneManager.LoadScene("TowerStack");
+            Common_UiManager.isGameOver = true;
         }
 
-        float direction = hangover > 0 ? 1f : -1f;
-
-        if (moveDirection == MoveDirection.Z)
+        if (lastBlock != null)
         {
-            SplitBlockOnZ(hangover, direction);
-        }
-        else
-        {
-            SplitBlockOnX(hangover, direction);
-        }
+            float direction = hangover > 0 ? 1f : -1f;
 
-        lastBlock = this;
+            if (moveDirection == MoveDirection.Z)
+            {
+                SplitBlockOnZ(hangover, direction);
+            }
+            else
+            {
+                SplitBlockOnX(hangover, direction);
+            }
+
+            lastBlock = this;
+            Common_UiManager.score++;
+        }
     }
 
     private float GetHangover()
     {
-        if(moveDirection == MoveDirection.Z)
+        if (moveDirection == MoveDirection.Z)
         {
             return transform.position.z - lastBlock.transform.position.z;
         }
@@ -118,8 +157,8 @@ public class Stack_MovingBlock : MonoBehaviour
     private void SpawnDropBlock(float fallingBlockzPosition, float fallingBlockSize)
     {
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        
-        if(moveDirection == MoveDirection.Z)
+
+        if (moveDirection == MoveDirection.Z)
         {
             cube.transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, fallingBlockSize);
             cube.transform.position = new Vector3(transform.position.x, transform.position.y, fallingBlockzPosition);

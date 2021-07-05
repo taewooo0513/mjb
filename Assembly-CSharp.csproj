@@ -75,6 +75,7 @@
     <Compile Include="Assets\Script\TowerStack\Stack_Camera.cs" />
     <Compile Include="Assets\Script\Fall\Fall_CameraMove.cs" />
     <Compile Include="Assets\Script\TowerStack\Stack_BlockSpanwer.cs" />
+    <Compile Include="Assets\Script\Ui\Common_UiManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Suriyun\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />

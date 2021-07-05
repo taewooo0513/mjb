@@ -50,7 +50,7 @@ public class MapDestroy : MonoBehaviour
                     mapColor.material.color = new Color(1, 1, 1);
                     SetMapPos();
 
-                    Fall_Gamemanager.score++;
+                    Common_UiManager.score++;
                     ScoreInteract();
 
                     break;
@@ -61,17 +61,17 @@ public class MapDestroy : MonoBehaviour
 
     private void ScoreInteract()
     {
-        if (Fall_Gamemanager.score % 1 == 0 && transform.localScale.x > 20)
+        if (Common_UiManager.score % 1 == 0 && transform.localScale.x > 20)
         {
             transform.localScale = new Vector3(transform.localScale.x - 0.2f, transform.localScale.y, transform.localScale.z - 0.2f);
         }
-        if (Fall_Gamemanager.score % 1 == 0)
+        if (Common_UiManager.score % 1 == 0)
         {
             Instantiate(enemyPrefab,
             new Vector3(transform.position.x, transform.position.y + 3f, transform.position.z),
             Quaternion.identity);
         }
-        if (Fall_Gamemanager.score % 7 == 0)
+        if (Common_UiManager.score % 7 == 0)
         {
             waitDelay -= 0.1f;
             wait = new WaitForSeconds(waitDelay);

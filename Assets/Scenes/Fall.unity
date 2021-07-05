@@ -442,7 +442,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1890422537}
-        m_TargetAssemblyTypeName: Fall_Uimanager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Common_UiManager, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
@@ -664,7 +664,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1890422537}
-        m_TargetAssemblyTypeName: Fall_Uimanager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Common_UiManager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -795,7 +795,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1890422537}
-        m_TargetAssemblyTypeName: Fall_Uimanager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Common_UiManager, Assembly-CSharp
         m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
@@ -1241,7 +1241,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1890422537}
-        m_TargetAssemblyTypeName: Fall_Uimanager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Common_UiManager, Assembly-CSharp
         m_MethodName: ReturnMenu
         m_Mode: 1
         m_Arguments:
@@ -1372,7 +1372,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1890422537}
-        m_TargetAssemblyTypeName: Fall_Uimanager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Common_UiManager, Assembly-CSharp
         m_MethodName: ReturnMenu
         m_Mode: 1
         m_Arguments:
@@ -1808,7 +1808,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1890422532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74cccf8072c02f49bd46ae7ea0ecefb, type: 3}
+  m_Script: {fileID: 11500000, guid: 751911460d4bc4f41be5773218f1877f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 92861186}

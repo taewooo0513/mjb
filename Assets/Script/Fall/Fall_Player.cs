@@ -20,7 +20,7 @@ public class Fall_Player : MonoBehaviour
     void Update()
     {
         if (transform.position.y < map.position.y - 5f)
-            Fall_Gamemanager.isGameOver = true;
+            Common_UiManager.isGameOver = true;
     }
 
     public void Move()
@@ -32,7 +32,9 @@ public class Fall_Player : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            rb.AddForce(Vector3.back * 15f, ForceMode.VelocityChange);
+            Vector3 dir = transform.position - collision.transform.position;
+            Vector3.Normalize(dir);
+            rb.AddForce(dir * 13f, ForceMode.VelocityChange);
         }
     }
 }

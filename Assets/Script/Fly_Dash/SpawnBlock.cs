@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnBlock : MonoBehaviour
 {
@@ -15,4 +16,15 @@ public class SpawnBlock : MonoBehaviour
     {
         
     }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("flying_Dash");
+    }
+    public void End()
+    {
+        SceneManager.LoadScene("MainMenu");
+
+    }
+
 }

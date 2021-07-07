@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManagerGame : MonoBehaviour
 {
     public static ManagerGame instance;
-    public int Score;
+    public float Score;
     public double Speed = 4;
     public float PlusSpeed;
     private void Awake()
@@ -22,13 +22,14 @@ public class ManagerGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Speed < 70)
+        Score +=6;
+        if (Speed < 70)
         Speed += PlusSpeed;
     }
 }

@@ -7,19 +7,25 @@ public class Dino : MonoBehaviour
     bool JumpOn = true;
     public GameObject Cam;
     public int Power;
+    public GameObject obj;
     public float ClickTime;
     private float NowTime;
     public Vector2 StartPos, NowPos;
+    int hp = 3;
     public GameObject EnemyObject;
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(hp == 0)
+        {
+            obj.SetActive(true);
+            Time.timeScale = 0;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             StartPos = Input.mousePosition;
@@ -44,6 +50,7 @@ public class Dino : MonoBehaviour
                         {
                             if (gameObject.TryGetComponent(out Rigidbody rigidbody))
                             {
+                                transform.GetComponent<Animator>().SetBool("Jump", JumpOn);
                                 rigidbody.AddForce(new Vector3(0, Power, 0));
                                 JumpOn = false;
                                 NowTime = 0;
@@ -58,6 +65,8 @@ public class Dino : MonoBehaviour
                         if (gameObject.TryGetComponent(out Rigidbody rigidbody))
                         {
                             JumpOn = false;
+                            transform.GetComponent<Animator>().SetBool("Jump", JumpOn);
+
                             rigidbody.AddForce(new Vector3(0, Power, 0));
                             NowTime = 0;
                         }
@@ -71,13 +80,15 @@ public class Dino : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             JumpOn = true;
+            transform.GetComponent<Animator>().SetBool("Jump", JumpOn);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-
+            hp--;
+            Debug.Log("gd");
         }
     }
 }

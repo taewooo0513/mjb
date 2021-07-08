@@ -7,21 +7,26 @@ public class Dino : MonoBehaviour
     bool JumpOn = true;
     public GameObject Cam;
     public int Power;
+    private float sec, nows;
     public GameObject obj;
     public float ClickTime;
     private float NowTime;
     public Vector2 StartPos, NowPos;
     int hp = 3;
     public GameObject EnemyObject;
+    bool Slide = false;
     // Start is called before the first frame update
     void Start()
     {
+        sec = 1.2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hp == 0)
+        transform.GetComponent<Animator>().SetBool("Slide", Slide);
+
+        if (hp == 0)
         {
             obj.SetActive(true);
             Time.timeScale = 0;
@@ -34,9 +39,24 @@ public class Dino : MonoBehaviour
         {
             NowPos = Input.mousePosition;
         }
+        else
+        {
+            StartPos = new Vector2(0, 0);
+            NowPos = new Vector2(0, 0);
+        }
         if (StartPos.y - NowPos.y > 5f)
         {
-            Debug.Log("정태영");
+            Slide = true;
+        }
+        if (Slide == true)
+        {
+            nows += Time.deltaTime;
+            if (nows > sec)
+            {
+                Debug.Log("t");
+                Slide = false;
+                nows = 0;
+            }
         }
         else
         {

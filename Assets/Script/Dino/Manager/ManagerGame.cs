@@ -28,6 +28,7 @@ public class ManagerGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale == 1)
         Score +=6;
         if (Speed < 70)
         Speed += PlusSpeed;

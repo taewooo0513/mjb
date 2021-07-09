@@ -21,27 +21,31 @@ public class MainMenu_UiManager : MonoBehaviour
         
     }
 
-    public void ClickedInfoButton(Sprite GameImage)
+    public void ClickedInfoButton(Text infoText)
     {
         GameObject button = EventSystem.current.currentSelectedGameObject;
 
         Image image = button.GetComponent<Image>();
-        Image parentImage = button.gameObject.transform.parent.GetComponent<Image>();
 
         if (image.sprite == infoButtonImages[0]) //초기 -> 누름
         {
             image.sprite = infoButtonImages[1];
-            parentImage.sprite = GameImage;
+            infoText.GetComponent<TextInfoInteract>().InfoOn();
         }
         else //누름 -> 초기
         {
             image.sprite = infoButtonImages[0];
-            parentImage.sprite = GameImage;
+            infoText.GetComponent<TextInfoInteract>().InfoOff();
         }
     }
 
     public void ClickedPlayButton(string GameName)
     {
         SceneManager.LoadScene(GameName);
+    }
+
+    public void ReturnTitle()
+    {
+        SceneManager.LoadScene("Title");
     }
 }

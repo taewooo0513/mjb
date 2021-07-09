@@ -38,17 +38,28 @@ public class Stack_MovingBlock : MonoBehaviour
 
     void Update()
     {
+        MoveRepeat();
+    }
+
+    private void MoveRepeat()
+    {
         if (moveDirection == MoveDirection.Z)
         {
             if (transform.position.z >= 1.3f)
             {
-                speed += 0.5f;
+                if(Mathf.Abs(speed) < 10)
+                {
+                    speed += 0.5f;
+                }
                 speed = -speed;
                 transform.position = new Vector3(transform.position.x, transform.position.y, 1.3f);
             }
             else if (transform.position.z <= -1.3f)
             {
-                speed -= 0.5f;
+                if (Mathf.Abs(speed) < 10)
+                {
+                    speed -= 0.5f;
+                }
                 speed = -speed;
                 transform.position = new Vector3(transform.position.x, transform.position.y, -1.3f);
             }
@@ -59,13 +70,19 @@ public class Stack_MovingBlock : MonoBehaviour
         {
             if (transform.position.x >= 1.3f)
             {
-                speed += 0.5f;
+                if (Mathf.Abs(speed) < 10)
+                {
+                    speed += 0.5f;
+                }
                 speed = -speed;
                 transform.position = new Vector3(1.3f, transform.position.y, transform.position.z);
             }
             else if (transform.position.x <= -1.3f)
             {
-                speed -= 0.5f;
+                if (Mathf.Abs(speed) < 10)
+                {
+                    speed -= 0.5f;
+                }
                 speed = -speed;
                 transform.position = new Vector3(-1.3f, transform.position.y, transform.position.z);
             }

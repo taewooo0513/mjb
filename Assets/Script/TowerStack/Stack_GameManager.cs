@@ -24,22 +24,25 @@ public class Stack_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(EventSystem.current.IsPointerOverGameObject() == false)
         {
-            if (gameStartText.IsActive())
-                gameStartText.enabled = false;
-
-            if (Stack_MovingBlock.currentBlock != null)
+            if (Input.GetMouseButtonDown(0))
             {
-                Stack_MovingBlock.currentBlock.Stop();
-                Stack_Camera.instance.CameraMoveToOnBlock();
-            }
-            if(Stack_MovingBlock.lastBlock != null)
-            {
-                spawnerIndex = spawnerIndex == 0 ? 1 : 0;
-                currentSpawner = spawners[spawnerIndex];
+                if (gameStartText.IsActive())
+                    gameStartText.enabled = false;
 
-                currentSpawner.SpawnBlock();
+                if (Stack_MovingBlock.currentBlock != null)
+                {
+                    Stack_MovingBlock.currentBlock.Stop();
+                    Stack_Camera.instance.CameraMoveToOnBlock();
+                }
+                if (Stack_MovingBlock.lastBlock != null)
+                {
+                    spawnerIndex = spawnerIndex == 0 ? 1 : 0;
+                    currentSpawner = spawners[spawnerIndex];
+
+                    currentSpawner.SpawnBlock();
+                }
             }
         }
     }
